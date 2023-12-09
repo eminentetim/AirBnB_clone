@@ -1,4 +1,5 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
+""" Import of all modules needed for the console"""
 import cmd
 import models
 from models.base_model import BaseModel
@@ -9,21 +10,26 @@ from models.review import Review
 from models.place import Place
 from models.city import City
 
+""" creating a class HBNHcommand"""
+
 class HBNBCommand(cmd.Cmd):
-    """ HBNH console """
-    prompt = '(hbnb) '
+    """Command interpreter prompt."""
+
+    prompt = "(hbnb) "
+
+    def do_quit(self, arg):
+        """Quit command to exit the program."""
+        return True
 
     def do_EOF(self, arg):
-        """Exits the console"""
+        """EOF command to exit the program."""
+        print("")
         return True
 
     def emptyline(self):
-        """Overwriting the emptyline"""
-        return False
+        """Do nothing on an empty line."""
+        pass
 
-    def do_quit(self, arg):
-        """ To quit the program"""
-        return True
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
 
-    if __name__ == ' __main__':
-        HBNBCommand().cmdloop()
