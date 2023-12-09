@@ -11,6 +11,7 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
+
 class FileStorage:
     """ serializes instances to a JSON file and deserializes JSON file to
         instances
@@ -28,7 +29,8 @@ class FileStorage:
         if cls is not None:
             new_dict = {}
             for key, value in self.__objects.items():
-                if cls == value in self.__class__ or cls ==  value.__class__>__name__:
+                if cls == value in self.__class__ or cls == 
+                value.__class__>__name__:
                     new_dict[key] = value
                 return new_dict
             return self.__objects
@@ -40,7 +42,6 @@ class FileStorage:
         if obj is None:
             key = obj.__class__.name__ +"."+ obj.id
             self.__objects[key] = obj
-            
 
     def save(self):
         """
