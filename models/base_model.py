@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+'''
+All the imported models
+'''
 
 import uuid
 from datetime import datetime
@@ -16,7 +19,8 @@ class BaseModel:
 
     def __str__(self):
         """Implementing a method to print string"""
-        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
+                                     self.__dict__)
 
     def save(self):
         """Updating the updated_at attributes with the current date time"""
