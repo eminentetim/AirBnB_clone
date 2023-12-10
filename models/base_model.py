@@ -5,7 +5,7 @@ All the imported models
 
 import uuid
 from datetime import datetime
-
+import models
 
 class BaseModel:
     """
@@ -36,6 +36,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            models.storage.new(self)
 
     def __str__(self):
         """Implementing a method to print string"""
@@ -45,6 +46,7 @@ class BaseModel:
     def save(self):
         """Updating the updated_at attributes with the current date time"""
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """Converting the instance attributes to a dictionary"""
