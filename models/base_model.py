@@ -4,15 +4,15 @@ import uuid
 from datetime import datetime
 
 
-class BaseModel():
+class BaseModel:
     """
     Defining a base class
     """
     def __init__(self):
         """ Creating a public instance attributes"""
-        self.updated_at = datetime.now()
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
+        self.updated_at = datetime.now()
 
     def __str__(self):
         """Implementing a method to print string"""
@@ -26,6 +26,6 @@ class BaseModel():
         """Converting the instance attributes to a dictionary"""
         my_dict = dict(self.__dict__)
         my_dict['__class__'] = self.__class__.__name__
-        my_dict['updated_at'] = self.updated_at.isoformat()
         my_dict['created_at'] = self.created_at.isoformat()
+        my_dict['updated_at'] = self.updated_at.isoformat()
         return my_dict
