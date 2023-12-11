@@ -49,9 +49,17 @@ class BaseModel:
         models.storage.save()
 
     def to_dict(self):
-        """Converting the instance attributes to a dictionary"""
-        my_dict = dict(self.__dict__)
-        my_dict['__class__'] = self.__class__.__name__
-        my_dict['created_at'] = self.created_at.isoformat()
-        my_dict['updated_at'] = self.updated_at.isoformat()
-        return my_dict
+        """returns a dictionary containing all keys/values of the instance"""
+        new_dict = self.__dict__.copy()
+        if "created_at" in new_dict:
+            new_dict["created_at"] = new_dict["created_at"].strftime(time)
+        if "updated_at" in new_dict:
+            new_dict["updated_at"] = new_dict["updated_at"].strftime(time)
+        new_dict["__class__"] = self.__class__.__name__
+        if "_sa_instance_state" in new_dict:
+            del new_dict["_sa_instance_state"]
+        return new_dict
+
+    def delete(self):
+        """delete the current instance from the storage"""
+        models.storage.delete(self)

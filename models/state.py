@@ -3,7 +3,7 @@
 from models.base_model import BaseModel
 
 
-class State(BaseMole):
+class State(BaseModel):
     """ State class for the Air_bnb project
     Attributes:
         name (str): name of the state
