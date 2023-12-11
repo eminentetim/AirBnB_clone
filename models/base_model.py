@@ -6,6 +6,8 @@ import uuid
 from datetime import datetime
 import models
 
+time = "%Y-%m-%dT%H:%M:%S.%f"
+
 
 class BaseModel:
     """
@@ -46,6 +48,7 @@ class BaseModel:
     def save(self):
         """Updating the updated_at attributes with the current date time"""
         self.updated_at = datetime.now()
+        models.storage.new(self)
         models.storage.save()
 
     def to_dict(self):
